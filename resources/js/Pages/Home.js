@@ -6,6 +6,7 @@ export default function Home(props) {
       <div>
          <h1>Hallo, nama saya {username}</h1>
          My Pages <br />
+         COba
       </div>
    );
 }
