@@ -3,9 +3,18 @@ import App from '../Layouts/App';
 
 export default function Dashboard() {
    return (
-      <App title="Dashboard">
-         <h1>Dashboard</h1>
-         <br />
-      </App>
+      <>
+         <div className="container">
+            <div className="card">
+               <div className="card-header">Dashboard</div>
+               <div className="card-body">Your dashboard</div>
+            </div>
+         </div>
+      </>
    );
 }
+
+Dashboard.layout = (page) => <App children={page} title="Dashboard" />;
+// Dashboard.layout = (page) => (
+//    <App {...{ children: page, title: 'Dashboard' }} />
+// );
