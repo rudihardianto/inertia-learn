@@ -23,7 +23,10 @@ class LoginController extends Controller
       if (Auth::attempt($request->only(['email', 'password']), $request->remember)) {
          session()->regenerate();
 
-         return redirect('/dashboard')->with('message', 'You are now logged in!');
+         return redirect('/dashboard')->with([
+            'type'    => 'success',
+            'message' => 'You are now logged in!',
+         ]);
       }
 
       throw ValidationException::withMessages([

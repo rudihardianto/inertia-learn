@@ -1,23 +1,19 @@
-import { Inertia } from '@inertiajs/inertia';
-import { Link } from '@inertiajs/inertia-react';
-import React, { useState } from 'react';
+import { Link, useForm } from '@inertiajs/inertia-react';
+import React from 'react';
 import Guest from '../../Layouts/Guest';
 
 export default function Login({ errors }) {
-   const [values, setValues] = useState({
-      email: '',
-      password: '',
+   const { data, setData, post } = useForm({
+      email: 'phyllis.cole@example.com',
+      password: 'password',
       remember: '',
    });
-
    const changeHandler = (e) => {
-      setValues({ ...values, [e.target.id]: e.target.value });
+      setData({ ...data, [e.target.id]: e.target.value });
    };
-
    const submitHandler = (e) => {
       e.preventDefault();
-      Inertia.post('/login', values);
-      console.log(errors);
+      post('/login', data);
    };
 
    return (
@@ -32,7 +28,7 @@ export default function Login({ errors }) {
                         Email
                      </label>
                      <input
-                        value={values.email}
+                        value={data.email}
                         onChange={changeHandler}
                         type="email"
                         name="email"
@@ -52,7 +48,7 @@ export default function Login({ errors }) {
                         Password
                      </label>
                      <input
-                        value={values.password}
+                        value={data.password}
                         onChange={changeHandler}
                         type="password"
                         name="password"
@@ -69,9 +65,9 @@ export default function Login({ errors }) {
                   {/* remember me */}
                   <div className="form-check">
                      <input
-                        value={values.email}
+                        value={data.remember}
                         onChange={(e) => {
-                           setValues({ ...values, remember: e.target.checked });
+                           setData({ ...data, remember: e.target.checked });
                         }}
                         className="form-check-input"
                         type="checkbox"
