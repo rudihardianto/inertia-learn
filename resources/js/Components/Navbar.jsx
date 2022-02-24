@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Navbar(props) {
    const { auth } = usePage().props;
-   console.log(auth);
+
    return (
       <nav
          className="navbar navbar-expand-lg navbar-dark"
@@ -59,21 +59,26 @@ export default function Navbar(props) {
                         >
                            <li>
                               <a className="dropdown-item" href="#">
-                                 Action
+                                 Profile
                               </a>
                            </li>
                            <li>
                               <a className="dropdown-item" href="#">
-                                 Another action
+                                 Settings
                               </a>
                            </li>
                            <li>
                               <hr className="dropdown-divider" />
                            </li>
                            <li>
-                              <a className="dropdown-item" href="#">
-                                 Something else here
-                              </a>
+                              <Link
+                                 className="dropdown-item"
+                                 method="post"
+                                 as="button"
+                                 href="/logout"
+                              >
+                                 Logout
+                              </Link>
                            </li>
                         </ul>
                      </li>

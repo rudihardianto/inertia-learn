@@ -5,9 +5,8 @@ import toast, { Toaster } from 'react-hot-toast';
 
 export default function App({ children, title }) {
    const { flash } = usePage().props;
-   useEffect(() => {
-      flash.type && toast[flash.type](flash.message);
-   }, []);
+   flash.type && toast[flash.type](flash.message);
+
    return (
       <div>
          <Head title={title} />

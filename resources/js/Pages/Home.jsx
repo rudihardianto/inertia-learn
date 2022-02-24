@@ -6,9 +6,9 @@ export default function Home(props) {
       <>
          <div className="container">
             <div className="card">
-               <div className="card-header">{props.username}</div>
                <div className="card-body">
-                  Hallo, nama saya {props.username}
+                  Learn Laravel with <strong>Inertia</strong> and
+                  <strong> React.js</strong>
                </div>
             </div>
          </div>
