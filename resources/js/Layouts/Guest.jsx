@@ -5,10 +5,7 @@ export default function App({ children, title }) {
    return (
       <div className="min-vh-100 d-flex justify-content-center align-items-center">
          <Head title={`${title} | Learn Inertia`} />
-         <div className="col-md-4">
-            <Link href="/">Logo</Link>
-            {children}
-         </div>
+         <div className="col-md-4">{children}</div>
       </div>
    );
 }
