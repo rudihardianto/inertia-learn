@@ -13,7 +13,7 @@ export default function Login({ errors }) {
    };
    const submitHandler = (e) => {
       e.preventDefault();
-      post('/login', data);
+      post(route('login'), data);
    };
 
    return (
@@ -86,8 +86,9 @@ export default function Login({ errors }) {
                </form>
             </div>
             <div className="card-footer">
+               <span className="text-muted">Does't have an account? </span>
                <Link
-                  href="/register"
+                  href={route('register')}
                   className="link-dark text-decoration-none"
                >
                   Register

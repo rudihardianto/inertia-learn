@@ -5326,14 +5326,14 @@ function Navbar(props) {
             className: "nav-item",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
               className: "nav-link",
-              href: "/",
+              href: route('home'),
               children: "Home"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
             className: "nav-item",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
               className: "nav-link",
-              href: "/dashboard",
+              href: route('dashboard'),
               children: "Dashboard"
             })
           })]
@@ -5373,7 +5373,7 @@ function Navbar(props) {
                   className: "dropdown-item",
                   method: "post",
                   as: "button",
-                  href: "/logout",
+                  href: route('logout'),
                   children: "Logout"
                 })
               })]
@@ -5385,14 +5385,14 @@ function Navbar(props) {
             className: "nav-item",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
               className: "nav-link",
-              href: "/login",
+              href: route('login'),
               children: "Login"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
             className: "nav-item",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
               className: "nav-link",
-              href: "/register",
+              href: route('register'),
               children: "Register"
             })
           })]
@@ -5524,7 +5524,7 @@ function Login(_ref) {
 
   var submitHandler = function submitHandler(e) {
     e.preventDefault();
-    post('/login', data);
+    post(route('login'), data);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
@@ -5596,13 +5596,16 @@ function Login(_ref) {
             children: "Login"
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "card-footer",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
-          href: "/register",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "text-muted",
+          children: "Does't have an account? "
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
+          href: route('register'),
           className: "link-dark text-decoration-none",
           children: "Register"
-        })
+        })]
       })]
     })
   });

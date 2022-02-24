@@ -30,12 +30,12 @@ export default function Navbar(props) {
             >
                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                     <Link className="nav-link" href="/">
+                     <Link className="nav-link" href={route('home')}>
                         Home
                      </Link>
                   </li>
                   <li className="nav-item">
-                     <Link className="nav-link" href="/dashboard">
+                     <Link className="nav-link" href={route('dashboard')}>
                         Dashboard
                      </Link>
                   </li>
@@ -75,7 +75,7 @@ export default function Navbar(props) {
                                  className="dropdown-item"
                                  method="post"
                                  as="button"
-                                 href="/logout"
+                                 href={route('logout')}
                               >
                                  Logout
                               </Link>
@@ -86,12 +86,12 @@ export default function Navbar(props) {
                ) : (
                   <ul className="navbar-nav mb-2 mb-lg-0">
                      <li className="nav-item">
-                        <Link className="nav-link" href="/login">
+                        <Link className="nav-link" href={route('login')}>
                            Login
                         </Link>
                      </li>
                      <li className="nav-item">
-                        <Link className="nav-link" href="/register">
+                        <Link className="nav-link" href={route('register')}>
                            Register
                         </Link>
                      </li>
