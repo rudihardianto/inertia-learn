@@ -39,6 +39,11 @@ export default function Navbar(props) {
                         Dashboard
                      </Link>
                   </li>
+                  <li className="nav-item">
+                     <Link className="nav-link" href={route('users.index')}>
+                        Users
+                     </Link>
+                  </li>
                </ul>
                {auth.user !== null ? (
                   <ul className="navbar-nav mb-2 mb-lg-0">
