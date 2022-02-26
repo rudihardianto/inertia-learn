@@ -17,4 +17,4 @@ mix.js('resources/js/app.js', 'public/js')
       //
    ]);
 
-mix.browserSync('inertia-learn.test');
+// mix.browserSync('inertia-learn.test');

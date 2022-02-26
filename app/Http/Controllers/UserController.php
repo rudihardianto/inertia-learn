@@ -14,9 +14,10 @@ class UserController extends Controller
     */
    public function index()
    {
-      //   return User::get();
+      //   return User::paginate(10);
+
       return inertia('Users/Index', [
-         'users' => User::get(),
+         'users' => User::paginate(10),
       ]);
    }
 
