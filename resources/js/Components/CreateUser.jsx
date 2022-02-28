@@ -28,14 +28,7 @@ export default function CreateUser({ close }) {
                   <label htmlFor="name" className="form-label">
                      Name
                   </label>
-                  <input
-                     type="text"
-                     name="name"
-                     value={data.name}
-                     onChange={onChange}
-                     id="name"
-                     className="form-control"
-                  />
+                  <input type="text" name="name" value={data.name} onChange={onChange} id="name" className="form-control" />
                </div>
             </div>
          </div>
@@ -45,14 +38,7 @@ export default function CreateUser({ close }) {
                   <label htmlFor="email" className="form-label">
                      Email
                   </label>
-                  <input
-                     type="text"
-                     name="email"
-                     value={data.email}
-                     onChange={onChange}
-                     id="email"
-                     className="form-control"
-                  />
+                  <input type="text" name="email" value={data.email} onChange={onChange} id="email" className="form-control" />
                </div>
             </div>
             <div className="col-md-6">
@@ -60,14 +46,7 @@ export default function CreateUser({ close }) {
                   <label htmlFor="username" className="form-label">
                      Username
                   </label>
-                  <input
-                     type="text"
-                     name="username"
-                     value={data.username}
-                     onChange={onChange}
-                     id="username"
-                     className="form-control"
-                  />
+                  <input type="text" name="username" value={data.username} onChange={onChange} id="username" className="form-control" />
                </div>
             </div>
          </div>
@@ -77,14 +56,7 @@ export default function CreateUser({ close }) {
                   <label htmlFor="location" className="form-label">
                      Location
                   </label>
-                  <input
-                     type="text"
-                     name="location"
-                     value={data.location}
-                     onChange={onChange}
-                     id="location"
-                     className="form-control"
-                  />
+                  <input type="text" name="location" value={data.location} onChange={onChange} id="location" className="form-control" />
                </div>
             </div>
             <div className="col-md-6">
@@ -92,14 +64,7 @@ export default function CreateUser({ close }) {
                   <label htmlFor="password" className="form-label">
                      Password
                   </label>
-                  <input
-                     type="password"
-                     name="password"
-                     value={data.password}
-                     onChange={onChange}
-                     id="password"
-                     className="form-control"
-                  />
+                  <input type="password" name="password" value={data.password} onChange={onChange} id="password" className="form-control" />
                </div>
             </div>
          </div>
