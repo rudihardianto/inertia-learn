@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,8 @@ class UserController extends Controller
     */
    public function index()
    {
-      //   return User::paginate(10);
-
       return inertia('Users/Index', [
-         'users' => User::paginate(10),
+         'users' => User::latest()->paginate(10),
       ]);
    }
 
@@ -37,9 +36,16 @@ class UserController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-   public function store(Request $request)
+   public function store(UserRequest $request)
    {
-      //
+      $attributes = $request->toArray();
+      User::create($attributes);
+
+      return back()->with([
+         'type'    => 'success',
+         'message' => 'User created successfully',
+      ]);
+
    }
 
    /**
