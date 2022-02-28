@@ -1,15 +1,24 @@
 import App from '../../Layouts/App';
-import React from 'react';
+import React, { useRef } from 'react';
 import Pagination from '../../Components/Pagination';
+import Dialog from '../../Components/Dialog';
 import CreateUser from '../../Components/CreateUser';
+import useDialog from '../../Hooks/useDialog';
 
 export default function Index(props) {
    const { data: users, links, from } = props.users;
+   const [addDialogHandler, addCloseTrigger, addTrigger] = useDialog();
 
    return (
       <>
          <div className="container">
-            <CreateUser />
+            <Dialog size="lg" trigger={addTrigger} title="Create New Users">
+               <CreateUser close={addCloseTrigger} />
+            </Dialog>
+            <button onClick={addDialogHandler} className="btn btn-primary">
+               Add
+            </button>
+
             <div className="card mt-3">
                <div className="card-header">Users</div>
                <div className="card-body">
@@ -34,9 +43,22 @@ export default function Index(props) {
                               <td>{user.location}</td>
                               <td>
                                  <div className="dropdown text-end">
-                                    <button className="btn p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button
+                                       className="btn p-0"
+                                       type="button"
+                                       id="dropdownMenuButton1"
+                                       data-bs-toggle="dropdown"
+                                       aria-expanded="false"
+                                    >
                                        {/* icon dots */}
-                                       <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                       <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          width={16}
+                                          height={16}
+                                          fill="currentColor"
+                                          className="bi bi-three-dots-vertical"
+                                          viewBox="0 0 16 16"
+                                       >
                                           <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                                        </svg>
                                     </button>
