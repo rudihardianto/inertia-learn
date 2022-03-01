@@ -16,6 +16,7 @@ export default function Index(props) {
       password: '',
    });
    const { data: users, links, from } = props.users;
+   const { addUser } = props;
    const [addDialogHandler, addCloseTrigger, addTrigger] = useDialog();
    const [editDialogHandler, editCloseTrigger, editTrigger] = useDialog();
    const [destroyDialogHandler, destroyCloseTrigger, destroyTrigger] = useDialog();
@@ -73,10 +74,13 @@ export default function Index(props) {
                   </button>
                </div>
             </Dialog>
-
-            <button onClick={addDialogHandler} className="btn btn-primary">
-               Add
-            </button>
+            {addUser ? (
+               <button onClick={addDialogHandler} className="btn btn-primary">
+                  Add
+               </button>
+            ) : (
+               'You are not authorized to create users'
+            )}
 
             <div className="card mt-3">
                <div className="card-header">Users</div>

@@ -6121,6 +6121,7 @@ function Index(props) {
       users = _props$users.data,
       links = _props$users.links,
       from = _props$users.from;
+  var addUser = props.addUser;
 
   var _useDialog = (0,_Hooks_useDialog__WEBPACK_IMPORTED_MODULE_4__["default"])(),
       _useDialog2 = _slicedToArray(_useDialog, 3),
@@ -6218,11 +6219,11 @@ function Index(props) {
             children: "Delete"
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+      }), addUser ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
         onClick: addDialogHandler,
         className: "btn btn-primary",
         children: "Add"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      }) : 'You are not authorized to create users', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "card mt-3",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "card-header",
