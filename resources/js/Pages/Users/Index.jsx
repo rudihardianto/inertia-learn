@@ -1,47 +1,77 @@
 import App from '../../Layouts/App';
-import React, { useState } from 'react';
+import React from 'react';
 import Pagination from '../../Components/Pagination';
 import Dialog from '../../Components/Dialog';
-import CreateUser from '../../Components/CreateUser';
 import useDialog from '../../Hooks/useDialog';
-import EditUser from '../../Components/EditUser';
 import { Inertia } from '@inertiajs/inertia';
+import FormUser from '../../Components/FormUser';
+import { useForm } from '@inertiajs/inertia-react';
 
 export default function Index(props) {
+   const { data, setData, post, put, reset, errors } = useForm({
+      name: '',
+      email: '',
+      username: '',
+      location: '',
+      password: '',
+   });
    const { data: users, links, from } = props.users;
-   const [state, setState] = useState([]);
    const [addDialogHandler, addCloseTrigger, addTrigger] = useDialog();
    const [editDialogHandler, editCloseTrigger, editTrigger] = useDialog();
    const [destroyDialogHandler, destroyCloseTrigger, destroyTrigger] = useDialog();
+   const onChange = (e) => setData({ ...data, [e.target.id]: e.target.value });
+
    const openEditDialog = (user) => {
-      setState(user);
+      setData(user);
       editDialogHandler();
    };
    const openDestroyDialog = (user) => {
-      setState(user);
+      setData(user);
       destroyDialogHandler();
    };
 
    const destroyUser = () => {
-      Inertia.delete(route('users.destroy', state.id), { onSuccess: () => destroyCloseTrigger() });
+      Inertia.delete(route('users.destroy', data.id), { onSuccess: () => destroyCloseTrigger() });
+   };
+
+   const storeHandler = (e) => {
+      e.preventDefault();
+      post(route('users.store'), {
+         data,
+         onSuccess: () => {
+            reset(), addCloseTrigger();
+         },
+      });
+   };
+
+   const updateHandler = (e) => {
+      e.preventDefault();
+      put(route('users.update', data.id), {
+         data,
+         onSuccess: () => {
+            reset(), editCloseTrigger();
+         },
+      });
    };
 
    return (
       <>
          <div className="container">
             <Dialog trigger={addTrigger} title="Create New Users">
-               <CreateUser close={addCloseTrigger} />
+               <FormUser {...{ errors, data, submitLabel: 'Create', submit: storeHandler, onChange }} />
             </Dialog>
 
-            <Dialog trigger={editTrigger} title={`Edit User: ${state.name}`}>
-               <EditUser model={state} close={editCloseTrigger} />
+            <Dialog trigger={editTrigger} title={`Edit User: ${data.name}`}>
+               <FormUser {...{ errors, data, submitLabel: 'Update', submit: updateHandler, onChange }} />
             </Dialog>
 
-            <Dialog trigger={destroyTrigger} title={`Delete User: ${state.name}`}>
+            <Dialog trigger={destroyTrigger} title={`Delete User: ${data.name}`}>
                <p>Are you sure you want to delete this user?</p>
-               <button onClick={destroyUser} className="btn btn-danger">
-                  Delete
-               </button>
+               <div className="d-flex justify-content-end">
+                  <button onClick={destroyUser} className="btn btn-danger">
+                     Delete
+                  </button>
+               </div>
             </Dialog>
 
             <button onClick={addDialogHandler} className="btn btn-primary">

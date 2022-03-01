@@ -1,10 +1,8 @@
 import React from 'react';
 
-export default function FormUser({ errors, data, submit, setData }) {
-   const onChange = (e) => setData({ ...data, [e.target.id]: e.target.value });
-
+export default function FormUser({ errors, data, submitLabel, submit, onChange }) {
    return (
-      <>
+      <form onSubmit={submit}>
          <div className="row">
             <div className="col-md-6">
                <div className="mb-3">
@@ -56,9 +54,11 @@ export default function FormUser({ errors, data, submit, setData }) {
                </div>
             </div>
          </div>
-         <button type="submit" className="btn btn-primary text-right">
-            {submit}
-         </button>
-      </>
+         <div className="d-flex justify-content-end">
+            <button type="submit" className="btn btn-primary">
+               {submitLabel}
+            </button>
+         </div>
+      </form>
    );
 }
