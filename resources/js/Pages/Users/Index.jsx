@@ -1,20 +1,32 @@
 import App from '../../Layouts/App';
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import Pagination from '../../Components/Pagination';
 import Dialog from '../../Components/Dialog';
 import CreateUser from '../../Components/CreateUser';
 import useDialog from '../../Hooks/useDialog';
+import EditUser from '../../Components/EditUser';
 
 export default function Index(props) {
    const { data: users, links, from } = props.users;
+   const [state, setState] = useState([]);
    const [addDialogHandler, addCloseTrigger, addTrigger] = useDialog();
+   const [editDialogHandler, editCloseTrigger, editTrigger] = useDialog();
+   const openEditDialog = (user) => {
+      setState(user);
+      editDialogHandler();
+   };
 
    return (
       <>
          <div className="container">
-            <Dialog size="lg" trigger={addTrigger} title="Create New Users">
+            <Dialog trigger={addTrigger} title="Create New Users">
                <CreateUser close={addCloseTrigger} />
             </Dialog>
+
+            <Dialog trigger={editTrigger} title={`Edit User: ${state.name}`}>
+               <EditUser model={state} close={editCloseTrigger} />
+            </Dialog>
+
             <button onClick={addDialogHandler} className="btn btn-primary">
                Add
             </button>
@@ -43,22 +55,9 @@ export default function Index(props) {
                               <td>{user.location}</td>
                               <td>
                                  <div className="dropdown text-end">
-                                    <button
-                                       className="btn p-0"
-                                       type="button"
-                                       id="dropdownMenuButton1"
-                                       data-bs-toggle="dropdown"
-                                       aria-expanded="false"
-                                    >
+                                    <button className="btn p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                        {/* icon dots */}
-                                       <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          width={16}
-                                          height={16}
-                                          fill="currentColor"
-                                          className="bi bi-three-dots-vertical"
-                                          viewBox="0 0 16 16"
-                                       >
+                                       <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                                           <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                                        </svg>
                                     </button>
@@ -69,9 +68,9 @@ export default function Index(props) {
                                           </a>
                                        </li>
                                        <li>
-                                          <a className="dropdown-item" href="#">
+                                          <button className="dropdown-item" onClick={() => openEditDialog(user)}>
                                              Edit
-                                          </a>
+                                          </button>
                                        </li>
                                        <li>
                                           <a className="dropdown-item text-danger" href="#">

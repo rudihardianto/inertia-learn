@@ -4,15 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-   /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
    public function index()
    {
       return inertia('Users/Index', [
@@ -20,22 +14,6 @@ class UserController extends Controller
       ]);
    }
 
-   /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-   public function create()
-   {
-      //
-   }
-
-   /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
    public function store(UserRequest $request)
    {
       $attributes = $request->toArray();
@@ -48,46 +26,22 @@ class UserController extends Controller
 
    }
 
-   /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
    public function show($id)
    {
       //
    }
 
-   /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-   public function edit($id)
+   public function update(UserRequest $request, User $user)
    {
-      //
+      $attributes = $request->toArray();
+      $user->update($attributes);
+
+      return back()->with([
+         'type'    => 'success',
+         'message' => 'User created updated successfully',
+      ]);
    }
 
-   /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-   public function update(Request $request, $id)
-   {
-      //
-   }
-
-   /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
    public function destroy($id)
    {
       //
