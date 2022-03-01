@@ -74,6 +74,7 @@ export default function Index(props) {
                   </button>
                </div>
             </Dialog>
+
             {addUser ? (
                <button onClick={addDialogHandler} className="btn btn-primary">
                   Add
